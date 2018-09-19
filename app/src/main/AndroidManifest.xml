@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="br.edu.ifsul.primeiraapp">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".activity.DetalheProdutoActivity"
+            android:label="@string/titulo_tela_produto" />
+        <activity
+            android:name=".activity.DetalheClienteActivity"
+            android:label="@string/titulo_tela_detalhe_cliente" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:label="@string/titulo_tela_login">
+
+        </activity>
+        <!-- DÚVIDA: como gero o <activity android:name=".activity.LoginActivity" android:label="Login"> -->
+        <activity
+            android:name=".activity.ListaDeProdutosActivity"
+            android:label="@string/login" />
+        <activity android:name=".activity.ProdutosActivity" />
+        <activity android:name=".activity.ClientesActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

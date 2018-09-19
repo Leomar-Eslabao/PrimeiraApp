@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteY="81dp">
+
+    <TextView
+        android:id="@+id/tvUsuario"
+        android:layout_width="71dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginLeft="27dp"
+        android:layout_marginRight="31dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="9dp"
+        android:text="Usuário"
+        app:layout_constraintBottom_toTopOf="@+id/tvNomeUsuario"
+        app:layout_constraintEnd_toStartOf="@+id/tvSituacao"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvNomeUsuario"
+        android:layout_width="329dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="397dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginLeft="27dp"
+        android:layout_marginRight="27dp"
+        android:layout_marginStart="27dp"
+        android:text="NomeUsuário"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSituacao" />
+
+    <ImageView
+        android:id="@+id/ivFotoCliente"
+        android:layout_width="185dp"
+        android:layout_height="125dp"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toTopOf="@+id/btAlterar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNomeUsuario"
+        app:srcCompat="@mipmap/ic_launcher_round" />
+
+    <Button
+        android:id="@+id/btAlterar"
+        android:layout_width="171dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="178dp"
+        android:text="Alterar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivFotoCliente" />
+
+    <TextView
+        android:id="@+id/tvSituacao"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginRight="27dp"
+        android:layout_marginTop="9dp"
+        android:text="Situação: usuário ativo"
+        app:layout_constraintBottom_toTopOf="@+id/tvNomeUsuario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvUsuario"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>

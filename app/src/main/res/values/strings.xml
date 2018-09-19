@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">PrimeiraApp</string>
+    <string name="titulo_tela_produto">Detalhe do Produto</string>
+    <string name="titulo_tela_cliente">Cliente</string>
+    <string name="nome_do_produto">Nome do Produto</string>
+    <string name="valor_produto">Valor do Produto R$</string>
+    <string name="quantidade_produto">Quantidade em estoque: </string>
+    <string name="descricao_produto">Descrição do produto.</string>
+    <string name="btcomprar">Comprar</string>
+    <string name="descricao_foto_produto">Foto do produto</string>
+    <string name="hint_quantidade">Digite a quantidade</string>
+    <string name="titulo_tela_detalhe_cliente">Detalhe do Cliente</string>
+    <string name="titulo_tela_login">Login</string>
+    <string name="login">Login</string>
+    <string name="nao_tenho_cadastro">Não tenho cadastro</string>
+    <string name="email">Email</string>
+    <string name="senha">Senha</string>
+    <string name="todo">TODO</string>
+
+</resources>
