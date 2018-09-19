@@ -18,7 +18,11 @@
         <activity
             android:name=".activity.LoginActivity"
             android:label="@string/titulo_tela_login">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <!-- DÚVIDA: como gero o <activity android:name=".activity.LoginActivity" android:label="Login"> -->
         <activity
@@ -26,11 +30,7 @@
             android:label="@string/login" />
         <activity android:name=".activity.ProdutosActivity" />
         <activity android:name=".activity.ClientesActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
