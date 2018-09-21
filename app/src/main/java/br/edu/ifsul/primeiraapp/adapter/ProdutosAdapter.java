@@ -43,6 +43,8 @@ public class ProdutosAdapter extends ArrayAdapter<Produto> {
         tvNomeProduto.setText(produto.getNome());
         TextView tvEstoque = convertView.findViewById(R.id.tvEstoqueProdutoAdapter);
         tvEstoque.setText(produto.getQuantidade().toString());
+        TextView tvPrecoProduto = convertView.findViewById(R.id.tvPrecoProdutoAdapter);
+        tvPrecoProduto.setText(produto.getValor().toString());
         ImageView fotoProduto = convertView.findViewById(R.id.imvFotoProdutoAdapter);
         if(produto.getUrl_foto()!=null){
            fotoProduto.setImageURI(Uri.parse(produto.getUrl_foto()));

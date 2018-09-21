@@ -1,6 +1,8 @@
 package br.edu.ifsul.primeiraapp.model;
 
-public class Produto {
+import java.io.Serializable;
+
+public class Produto implements Serializable {
     private long id;
     private String nome;
     private String descricao;

@@ -1,6 +1,8 @@
 package br.edu.ifsul.primeiraapp.model;
 
-public class Cliente {
+import java.io.Serializable;
+
+public class Cliente implements Serializable{
 private Long id_cliente;
 private String nome;
 private String sobrenome;
@@ -8,7 +10,7 @@ private Boolean situacao;
 private String url_cliente;
 private Long cpf;
 
- public Cliente(){}//tem que criar esse construtor porque o firebase precisa dele
+ public Cliente(){}//tem que criar esse construtor porque o firebase precisa dele... usa a ferramenta para gerar automáticamente.
 
     public Long getId_cliente() {
         return id_cliente;

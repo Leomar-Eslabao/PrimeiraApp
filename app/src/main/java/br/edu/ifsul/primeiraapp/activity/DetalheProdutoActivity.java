@@ -38,7 +38,8 @@ public class DetalheProdutoActivity extends AppCompatActivity {
          produto.setQuantidade(new Integer ( 100));//como estou usando o Double posso criar um construtor para informar o valor
          myRef.child("produtos").child(String.valueOf(produto.getCodigoDeBarras())).setValue(produto);*/
 
-
+        produto = (Produto) getIntent().getSerializableExtra("produto");
+        atualizarView();
 
 
 
@@ -61,7 +62,7 @@ public class DetalheProdutoActivity extends AppCompatActivity {
 
     }
 
-    private void carregarView() {
+    private void atualizarView() {
         TextView tvNome = findViewById(R.id.tvNomeProdutoAdapter);
         tvNome.setText(produto.getNome());
         TextView tvDescricao= findViewById(R.id.tvDescricaoProduto);
@@ -71,4 +72,6 @@ public class DetalheProdutoActivity extends AppCompatActivity {
         TextView tvQuantidade = findViewById(R.id.tvQuantidadeProduto);
         tvQuantidade.setText(produto.getQuantidade().toString());
     }
+
+
 }

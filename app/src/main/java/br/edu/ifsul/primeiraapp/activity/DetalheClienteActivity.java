@@ -32,17 +32,13 @@ public class DetalheClienteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detalhe_cliente);
 
         cliente1 = new Cliente();
-        cliente1.setNome("João da Silva");
-        cliente1.setSituacao(true);
+       /* cliente1.setNome("João da Silva");
+        cliente1.setSituacao(true);*/
+        cliente1 = (Cliente) getIntent().getSerializableExtra("cliente");
 
-        TextView tvNomeUsuario = findViewById(R.id.tvNomeUsuario);
-        tvNomeUsuario.setText(cliente1.getNome());
-        TextView tvSituacao = findViewById(R.id.tvSituacao);
-        if (cliente1.getSituacao()){
-            tvSituacao.setText("Ativo");
-        }else{
-            tvSituacao.setText("Inativo");
-        }
+            atualizarView();
+
+
 
         Button btAlterar = findViewById(R.id.btAlterar);
         btAlterar.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +49,19 @@ public class DetalheClienteActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+
+
+    private void atualizarView() {
+        TextView tvNomeUsuario = findViewById(R.id.tvNomeUsuario);
+        tvNomeUsuario.setText(cliente1.getNome());
+        TextView tvSituacao = findViewById(R.id.tvSituacao);
+        if (cliente1.getSituacao()){
+            tvSituacao.setText("Ativo");
+        }else{
+            tvSituacao.setText("Inativo");
+        }
 
     }
 }

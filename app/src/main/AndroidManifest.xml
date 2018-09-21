@@ -23,12 +23,15 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <!-- DÚVIDA: como gero o <activity android:name=".activity.LoginActivity" android:label="Login"> -->
         <activity
             android:name=".activity.ListaDeProdutosActivity"
             android:label="@string/login" />
-        <activity android:name=".activity.ProdutosActivity" />
+        <activity android:name=".activity.ProdutosActivity" >
+
+        </activity>
         <activity android:name=".activity.ClientesActivity">
 
         </activity>

@@ -1,9 +1,13 @@
 package br.edu.ifsul.primeiraapp.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,6 +37,16 @@ public class ProdutosActivity extends AppCompatActivity {
 
 
       lvProdutos = findViewById(R.id.lvProdutos);
+      lvProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+          @Override
+          public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Log.d(TAG,"Objeto Clicado" + produtos.get(position));
+             // Toast.makeText(ProdutosActivity.this, produtos.get(position).toString(), Toast.LENGTH_SHORT).show();// Toast para verificar se o objeto foi criado e o seu valor
+              Intent intent = new Intent(ProdutosActivity.this, DetalheProdutoActivity.class);
+              intent.putExtra("produto",produtos.get(position));
+              startActivity(intent);
+          }
+      });
         produtos= new ArrayList<>();
         /*Produto produto = new Produto();
         produto.setNome("Meu produto");

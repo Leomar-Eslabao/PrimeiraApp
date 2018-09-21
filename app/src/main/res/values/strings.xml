@@ -16,5 +16,8 @@
     <string name="email">Email</string>
     <string name="senha">Senha</string>
     <string name="todo">TODO</string>
+    <string name="menu_pesquisar">Pesquisar</string>
+    <string name="title_menu_lercodigodebarras">Ler código de Barras</string>
+    <string name="preco_produto">Preço do Produto</string>
 
 </resources>
