@@ -3,7 +3,7 @@ package br.edu.ifsul.primeiraapp.model;
 import java.io.Serializable;
 
 public class Produto implements Serializable {
-    private long id;
+    private long codigoDeBarras;
     private String nome;
     private String descricao;
     private  Double valor;
@@ -11,14 +11,22 @@ public class Produto implements Serializable {
     private boolean situacao;
     private String url_foto;
 
+
+
+
+
+
+
+
+
     public Produto(){} // tem que criar esse construtor porque o firebase precisa dele para fazer o envio de dados
 
-    public long getId() {
-        return id;
+    public long getCodigoDeBarras() {
+        return codigoDeBarras;
     }
 
-    public void setId(long codigoDeBarras) {
-        this.id = codigoDeBarras;
+    public void setCodigoDeBarras(long codigoDeBarras) {
+        this.codigoDeBarras = codigoDeBarras;
     }
 
     public String getNome() {
@@ -72,7 +80,7 @@ public class Produto implements Serializable {
     @Override
     public String toString() {
         return "Produto{" +
-                "codigoDeBarras=" + id +
+                "codigoDeBarras=" + codigoDeBarras +
                 ", nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", valor=" + valor +

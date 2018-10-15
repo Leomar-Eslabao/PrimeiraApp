@@ -13,11 +13,12 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import br.edu.ifsul.primeiraapp.R;
 import br.edu.ifsul.primeiraapp.model.Cliente;
+import br.edu.ifsul.primeiraapp.setup.AppSetup;
 
 public class DetalheClienteActivity extends AppCompatActivity {
 
     private static final String TAG = "detalheClienteActivity";
-    private Cliente cliente1;
+    private Cliente cliente;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -31,10 +32,7 @@ public class DetalheClienteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalhe_cliente);
 
-        cliente1 = new Cliente();
-       /* cliente1.setNome("João da Silva");
-        cliente1.setSituacao(true);*/
-        cliente1 = (Cliente) getIntent().getSerializableExtra("cliente");
+        cliente = (Cliente) getIntent().getSerializableExtra("cliente");
 
             atualizarView();
 
@@ -44,8 +42,15 @@ public class DetalheClienteActivity extends AppCompatActivity {
         btAlterar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(DetalheProdutoActivity.this, "Parabéns, você clicou em alterar:" + produto.getQuantidade().toString(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(DetalheClienteActivity.this, "Parabéns, você clicou em alterar", Toast.LENGTH_SHORT).show();
+                if(cliente!=null){
+                    AppSetup.cliente=cliente;
+                    Toast.makeText(DetalheClienteActivity.this, "Cliente Selecionado", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+                else{
+                    Toast.makeText(DetalheClienteActivity.this, "Não foi possível selecionar o cliente", Toast.LENGTH_SHORT).show();
+                }
+
 
             }
         });
@@ -55,9 +60,9 @@ public class DetalheClienteActivity extends AppCompatActivity {
 
     private void atualizarView() {
         TextView tvNomeUsuario = findViewById(R.id.tvNomeUsuario);
-        tvNomeUsuario.setText(cliente1.getNome());
+        tvNomeUsuario.setText(cliente.getNome());
         TextView tvSituacao = findViewById(R.id.tvSituacao);
-        if (cliente1.getSituacao()){
+        if (cliente.getSituacao()){
             tvSituacao.setText("Ativo");
         }else{
             tvSituacao.setText("Inativo");

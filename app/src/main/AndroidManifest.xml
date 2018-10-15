@@ -2,6 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.edu.ifsul.primeiraapp">
 
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -23,18 +33,16 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+        <activity android:name=".barcode.BarcodeCaptureActivity"/>
+
+
+
         <!-- DÚVIDA: como gero o <activity android:name=".activity.LoginActivity" android:label="Login"> -->
-        <activity
-            android:name=".activity.ListaDeProdutosActivity"
-            android:label="@string/login" />
-        <activity android:name=".activity.ProdutosActivity" >
-
-        </activity>
-        <activity android:name=".activity.ClientesActivity">
-
-        </activity>
+        <activity android:name=".activity.ListaDeProdutosActivity"></activity>
+        <activity android:name=".activity.ProdutosActivity"></activity>
+        <activity android:name=".activity.ClientesActivity"></activity>
+        <activity android:name=".activity.CestaActivity"></activity>
     </application>
 
 </manifest>

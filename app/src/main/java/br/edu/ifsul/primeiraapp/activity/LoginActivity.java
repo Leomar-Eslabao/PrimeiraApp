@@ -15,10 +15,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
-import br.edu.ifsul.primeiraapp.R;
 import br.edu.ifsul.primeiraapp.setup.AppSetup;
+
+import static br.edu.ifsul.primeiraapp.R.*;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity" ;
@@ -39,14 +39,14 @@ public class LoginActivity extends AppCompatActivity {
 
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
 
-        final EditText etmail = findViewById(R.id.etEmail);
-        final EditText etsenha = findViewById(R.id.etSenha);
-        Button btLogin = findViewById(R.id.btLogin);
-        Button btFazerCadastroLogin = findViewById(R.id.btFazerCadastroLogin);
+        final EditText etmail = findViewById(id.etEmail);
+        final EditText etsenha = findViewById(id.etSenha);
+        Button btLogin = findViewById(id.btLogin);
+        Button btFazerCadastroLogin = findViewById(id.btFazerCadastroLogin);
 
 
 
@@ -75,18 +75,18 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
+                            // Sign in success, update UI with the signed-in vendedor's information
                             Log.d(TAG, "createUserWithEmail:success");
 
 
-                            AppSetup.user = mAuth.getCurrentUser();
+                            AppSetup.vendedor = mAuth.getCurrentUser();
 
 
 
-                            //updateUI(user);
+                            //updateUI(vendedor);
 
                         } else {
-                            // If sign in fails, display a message to the user.
+                            // If sign in fails, display a message to the vendedor.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
@@ -105,16 +105,16 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
+                            // Sign in success, update UI with the signed-in vendedor's information
                             Log.d(TAG, "signInWithEmail:success");
                             Toast.makeText(LoginActivity.this, "Usuário logado com sucesso.",
                                     Toast.LENGTH_SHORT).show();
-                            AppSetup.user = mAuth.getCurrentUser();
+                            AppSetup.vendedor = mAuth.getCurrentUser();
                             //startActivity(new Intent(LoginActivity.this, ProdutosActivity.class));
-                            startActivity(new Intent(LoginActivity.this, ClientesActivity.class));
-                            // updateUI(user);
+                            startActivity(new Intent(LoginActivity.this, ProdutosActivity.class));
+                            // updateUI(vendedor);
                         } else {
-                            // If sign in fails, display a message to the user.
+                            // If sign in fails, display a message to the vendedor.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
@@ -124,6 +124,7 @@ public class LoginActivity extends AppCompatActivity {
                         // ...
                     }
                 });
+
 
     }
 }
