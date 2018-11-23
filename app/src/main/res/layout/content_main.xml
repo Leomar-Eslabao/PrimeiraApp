@@ -4,6 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.ListaDeProdutosActivity">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activity.ProdutosActivity"
+    tools:showIn="@layout/app_bar_main">
+
+   <include layout="@layout/activity_produtos"></include>
 
 </android.support.constraint.ConstraintLayout>

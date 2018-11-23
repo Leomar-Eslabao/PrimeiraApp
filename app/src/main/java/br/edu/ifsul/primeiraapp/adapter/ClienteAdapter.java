@@ -40,7 +40,7 @@ public class ClienteAdapter extends ArrayAdapter<Cliente> {
         tvNomeCliente.setText(cliente.getNome());
 
         TextView tvCodCliente = convertView.findViewById(R.id.tvCodigoClienteAdapter);
-        tvCodCliente.setText(cliente.getId_cliente().toString());
+        tvCodCliente.setText(cliente.getCodigoDeBarras().toString());
 
         TextView tvCPF = convertView.findViewById(R.id.tvCPFClienteAdapter);
         tvCPF.setText(cliente.getCpf().toString());

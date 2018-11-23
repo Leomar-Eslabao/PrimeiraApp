@@ -3,29 +3,24 @@ package br.edu.ifsul.primeiraapp.model;
 import java.io.Serializable;
 
 public class Produto implements Serializable {
-    private long codigoDeBarras;
+    private Long codigoDeBarras;
     private String nome;
     private String descricao;
     private  Double valor;
     private  Integer quantidade;
     private boolean situacao;
     private String url_foto;
-
-
-
-
-
-
+    private String key;
 
 
 
     public Produto(){} // tem que criar esse construtor porque o firebase precisa dele para fazer o envio de dados
 
-    public long getCodigoDeBarras() {
+    public Long getCodigoDeBarras() {
         return codigoDeBarras;
     }
 
-    public void setCodigoDeBarras(long codigoDeBarras) {
+    public void setCodigoDeBarras(Long codigoDeBarras) {
         this.codigoDeBarras = codigoDeBarras;
     }
 
@@ -77,6 +72,14 @@ public class Produto implements Serializable {
         this.url_foto = url_foto;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
     @Override
     public String toString() {
         return "Produto{" +
@@ -87,6 +90,7 @@ public class Produto implements Serializable {
                 ", quantidade=" + quantidade +
                 ", situacao=" + situacao +
                 ", url_foto='" + url_foto + '\'' +
+                ", key='" + key + '\'' +
                 '}';
     }
 }

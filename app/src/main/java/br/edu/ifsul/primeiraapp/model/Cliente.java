@@ -3,21 +3,23 @@ package br.edu.ifsul.primeiraapp.model;
 import java.io.Serializable;
 
 public class Cliente implements Serializable{
-private Long id_cliente;
-private String nome;
-private String sobrenome;
-private Boolean situacao;
-private String url_cliente;
-private Long cpf;
+    private Long codigoDeBarras;
+    private Long cpf;
+    private String nome;
+    private String sobrenome;
+    private Boolean situacao;
+    private String url_cliente;
 
- public Cliente(){}//tem que criar esse construtor porque o firebase precisa dele... usa a ferramenta para gerar automáticamente.
 
-    public Long getId_cliente() {
-        return id_cliente;
+    public Cliente() {
+    }//tem que criar esse construtor porque o firebase precisa dele... usa a ferramenta para gerar automáticamente.
+
+    public Long getCodigoDeBarras() {
+        return codigoDeBarras;
     }
 
-    public void setId_cliente(Long id_cliente) {
-        this.id_cliente = id_cliente;
+    public void setCodigoDeBarras(Long codigoDeBarras) {
+        this.codigoDeBarras = codigoDeBarras;
     }
 
     public String getNome() {
@@ -63,7 +65,7 @@ private Long cpf;
     @Override
     public String toString() {
         return "Cliente{" +
-                "id_cliente=" + id_cliente +
+                "codigoDeBarras=" + codigoDeBarras +
                 ", nome='" + nome + '\'' +
                 ", sobrenome='" + sobrenome + '\'' +
                 ", situacao=" + situacao +

@@ -110,9 +110,11 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, "Usuário logado com sucesso.",
                                     Toast.LENGTH_SHORT).show();
                             AppSetup.vendedor = mAuth.getCurrentUser();
+                            Log.d(TAG, "Vendedor logado: " +  AppSetup.vendedor.getEmail());
                             //startActivity(new Intent(LoginActivity.this, ProdutosActivity.class));
                             startActivity(new Intent(LoginActivity.this, ProdutosActivity.class));
                             // updateUI(vendedor);
+                            finish(); //não salva a activity anterior na lista de BACKSTACK para retornar quando  activity é fechada.
                         } else {
                             // If sign in fails, display a message to the vendedor.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());

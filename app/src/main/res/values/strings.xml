@@ -32,5 +32,40 @@
     <string name="barcode_success">Barcode read successfully</string>
     <string name="barcode_failure">No barcode captured</string>
     <string name="barcode_error">"Error reading barcode: %1$s"</string>
+    <string name="Sim">sim</string>
+    <string name="Não">nao</string>
+    <string name="menu_vender">Vender</string>
+    <string name="menu_cancelar">Cancelar</string>
+    <string name="nav_header_desc">Foto do vendedor</string>
+    <string name="nav_header_title">Vendedor</string>
+    <string name="action_settings">settings</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="foto_do_produto">Foto do produto:</string>
+    <string name="label_codigo_de_barras">Código de barras:</string>
+    <string name="hint_codigo_de_barras">Utilize o leitor ouu digite o código de barras</string>
+    <string name="label_nome">Nome:</string>
+    <string name="hint_nome_produto">Digite o nome do produto</string>
+    <string name="label_descricao">Descrição do produto:</string>
+    <string name="hint_descricao_produto">Descrição do produto</string>
+    <string name="label_valor">Valor:</string>
+    <string name="hint_valor">Digite o valor do produto</string>
+    <string name="label_quantidade">Quantidade:</string>
+    <string name="hint_quantidade_digite">Digite a quantidade</string>
+    <string name="bt_inserir">Inserir</string>
+    <string name="toast_otimo_produto_cadastrado">Ótimo, Produto cadastrado com Sucesso!!!</string>
+    <string name="toast_produto_nao_cadastrado">Erro!!! Produto não Cadastrado...</string>
+    <string name="toast_todos_campos_devem_preenchidos">Todos os campos devem ser preenchidos</string>
+    <string name="menu_nav_carrinho">Carrinho</string>
+    <string name="menu_nav_lista_de_clientes">Lista de clientes</string>
+    <string name="menu_nav_produto_admin">Produto</string>
+    <string name="menu_nav_cliente_admin">Cliente</string>
+    <string name="menu_nav_sobre">Sobre</string>
+    <string name="menu_nav_sair">Sair</string>
+    <string name="situacao_usuario_ativo">Situação:</string>
+    <string name="toast_produto_removido">Produto Removido da Cesta!</string>
+    <string name="toast_nao_ha_dados_cadastrados">Não há dados cadastrados</string>
+
 
 </resources>

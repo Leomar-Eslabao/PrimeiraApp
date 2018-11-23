@@ -3,11 +3,14 @@ package br.edu.ifsul.primeiraapp.activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -20,8 +23,9 @@ import br.edu.ifsul.primeiraapp.setup.AppSetup;
 public class DetalheProdutoActivity extends AppCompatActivity {
 
     private static final String TAG = "detalheProdutoActivity";
-    private Produto produto;
     private EditText etQuantidade;
+
+    private Integer position = -1;
 
 
     @Override
@@ -37,16 +41,13 @@ public class DetalheProdutoActivity extends AppCompatActivity {
         etQuantidade = findViewById(R.id.etQuantidade);
 
 
-         produto = new Produto();
-         //código para criar um objeto no BD
-         /*produto.setCodigoDeBarras(2L);//código de barras do produto
-         produto.setNome("mouse");
-         produto.setDescricao("mouse usb");
-         produto.setValor(35.00);
-         produto.setQuantidade(new Integer ( 100));//como estou usando o Double posso criar um construtor para informar o valor
-         myRef.child("produtos").child(String.valueOf(produto.getCodigoDeBarras())).setValue(produto);*/
 
-        produto = (Produto) getIntent().getSerializableExtra("produto"); //cria um novo produto com os dados que recebeu da intent (vindo do ProdutosActivity
+
+        //obtém o objeto produto anexado a intent
+        position = getIntent().getExtras().getInt("position");
+        Log.d(TAG, "Positon = " + position);
+        Log.d(TAG, "Objeto selecionado = " + AppSetup.produtos.get(position));
+
 
         atualizarView();
 
@@ -63,22 +64,35 @@ public class DetalheProdutoActivity extends AppCompatActivity {
 
                     //DÚVIDA: QUANDO CLICO NO COMPRAR PARA ONDE DEVO MANDAR OS DADOS DO PRODUTO COMPRADO,
                     // PARA QUE POSSA SER INSERIDO NA CESTA?  VAI PARA O ITEMPEDIDO? preciso dar um start activity para a cestaactivity
-                   if (AppSetup.cliente==null){
-                       Toast.makeText(DetalheProdutoActivity.this, "Selecione o cliente.", Toast.LENGTH_SHORT).show();
-                       startActivity(new Intent(DetalheProdutoActivity.this, ClientesActivity.class));//
-                   }
-                   else {
-                       if (!etQuantidade.getText().toString().isEmpty()) {
-                           ItemPedido item = new ItemPedido(Integer.valueOf(etQuantidade.getText().toString()), produto);
-                           AppSetup.cesta.add(item);
-                           startActivity(new Intent(DetalheProdutoActivity.this, CestaActivity.class));
 
-                           // Toast.makeText(DetalheProdutoActivity.this, "Parabéns, você comprou:" + produto.getQuantidade().toString(), Toast.LENGTH_SHORT).show();
-                       } else {
-                           Toast.makeText(DetalheProdutoActivity.this, "Digite a quantidade a ser comprada", Toast.LENGTH_SHORT).show();
-                       }
+                if(AppSetup.cliente == null){
+                    Toast.makeText(DetalheProdutoActivity.this, "Selecione um cliente para venda.", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(DetalheProdutoActivity.this, ClientesActivity.class));
+                }else{
+                    if(!etQuantidade.getText().toString().isEmpty()){
+                        if(Integer.parseInt(etQuantidade.getText().toString()) <= AppSetup.produtos.get(position).getQuantidade().intValue()){
+                            //cria o item vendido e o adiciona no carrinho
+                            ItemPedido itemPedido = new ItemPedido();
+                            itemPedido.setQuantidadePedido(Integer.valueOf(etQuantidade.getText().toString()));
+                            itemPedido.setProduto(AppSetup.produtos.get(position));
+                            itemPedido.getProduto().setSituacao(false);
+                            itemPedido.setTotalItemPedido(AppSetup.produtos.get(position).getValor()*itemPedido.getQuantidadePedido());
+                            AppSetup.cesta.add(itemPedido);
+                            //atualizar o estoque no Firebase
+                            DatabaseReference myRef = AppSetup.getInstance().child("produtos").child(AppSetup.produtos.get(position).getKey()).child("quantidade");
+                            myRef.setValue(AppSetup.produtos.get(position).getQuantidade() - itemPedido.getQuantidadePedido());
 
-                   }
+                            Toast.makeText(DetalheProdutoActivity.this,"Item adicionado ao carrinho.", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(DetalheProdutoActivity.this, CestaActivity.class));
+                            finish();
+                        }else{
+                            Toast.makeText(DetalheProdutoActivity.this, "Ultrapassa a quantidade em estoque.", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }else{
+                        Toast.makeText(DetalheProdutoActivity.this, "Digite a quantidade.", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
 
@@ -87,14 +101,14 @@ public class DetalheProdutoActivity extends AppCompatActivity {
 
     private void atualizarView() {
         TextView tvNome = findViewById(R.id.tvNomeProdutoAdapter);
-        tvNome.setText(produto.getNome());
+        tvNome.setText(AppSetup.produtos.get(position).getNome());
         TextView tvDescricao= findViewById(R.id.tvDescricaoProduto);
-        tvDescricao.setText (produto.getDescricao());
+        tvDescricao.setText (AppSetup.produtos.get(position).getDescricao());
         TextView tvValor = findViewById(R.id.tvValorProduto);
-        tvValor.setText(NumberFormat.getCurrencyInstance().format(produto.getValor()));
+        tvValor.setText(NumberFormat.getCurrencyInstance().format(AppSetup.produtos.get(position).getValor()));
         //tvValor.setText(produto.getValor().toString());
         TextView tvQuantidade = findViewById(R.id.tvQuantidadeProduto);
-        tvQuantidade.setText(produto.getQuantidade().toString());
+        tvQuantidade.setText(AppSetup.produtos.get(position).getQuantidade().toString());
     }
 
 

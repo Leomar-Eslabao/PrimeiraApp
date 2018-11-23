@@ -39,9 +39,15 @@
 
 
         <!-- DÚVIDA: como gero o <activity android:name=".activity.LoginActivity" android:label="Login"> -->
-        <activity android:name=".activity.ListaDeProdutosActivity"></activity>
-        <activity android:name=".activity.ProdutosActivity"></activity>
-        <activity android:name=".activity.ClientesActivity"></activity>
+
+        <activity
+            android:name=".activity.ProdutosActivity"
+            android:label="Produtos"
+            android:theme="@style/AppTheme.NoActionBar"
+            >
+
+        </activity>
+        <activity android:name=".activity.ClientesActivity" android:label="Clientes"></activity>
         <activity android:name=".activity.CestaActivity"></activity>
     </application>
 

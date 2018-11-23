@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Pedido {
-    private Long totalPedido;
+    private Double totalPedido;
     private Long idPedido;
     private String estadoPedido;
     private Date dataCriacao;
@@ -16,7 +16,7 @@ public class Pedido {
     // depois tem q criar um toString, no final da classe, para converter
     private Cliente cliente;
 
-    public Pedido(Long totalPedido, Long idPedido, String estadoPedido, Date dataCriacao, boolean situacaoPedido, Date dataModificacaoPedido, String formaPagamento, List<ItemPedido> itensPedido, Cliente cliente) {
+    public Pedido(Double totalPedido, Long idPedido, String estadoPedido, Date dataCriacao, boolean situacaoPedido, Date dataModificacaoPedido, String formaPagamento, List<ItemPedido> itensPedido, Cliente cliente) {
         this.totalPedido = totalPedido;
         this.idPedido = idPedido;
         this.estadoPedido = estadoPedido;
@@ -30,7 +30,7 @@ public class Pedido {
 
     public Pedido(){} //construtor vazio p o android
 
-    public Pedido(Long totalPedido, Long idPedido, String estadoPedido, Date dataCriacao, boolean situacaoPedido, Date dataModificacaoPedido, String formaPagamento, List <ItemPedido> itensPedido) {
+    public Pedido(Double totalPedido, Long idPedido, String estadoPedido, Date dataCriacao, boolean situacaoPedido, Date dataModificacaoPedido, String formaPagamento, List <ItemPedido> itensPedido) {
         this.totalPedido = totalPedido;
         this.idPedido = idPedido;
         this.estadoPedido = estadoPedido;
@@ -42,11 +42,11 @@ public class Pedido {
     }
 
     //getters e seters
-    public Long getTotalPedido() {
+    public Double getTotalPedido() {
         return totalPedido;
     }
 
-    public void setTotalPedido(Long totalPedido) {
+    public void setTotalPedido(Double totalPedido) {
         this.totalPedido = totalPedido;
     }
 
