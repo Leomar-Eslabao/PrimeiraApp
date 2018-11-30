@@ -22,7 +22,7 @@ import br.edu.ifsul.primeiraapp.barcode.BarcodeCaptureActivity;
 import br.edu.ifsul.primeiraapp.model.Produto;
 import br.edu.ifsul.primeiraapp.setup.AppSetup;
 
-public class ProdutoAdminActivity extends AppCompatActivity {
+public class ProdutosAdminActivity extends AppCompatActivity {
 
     private static final String TAG = "produtoAdminActivity";
     private static final int RC_BARCODE_CAPTURE = 9001;
@@ -66,19 +66,19 @@ public class ProdutoAdminActivity extends AppCompatActivity {
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Toast.makeText(ProdutoAdminActivity.this, R.string.toast_otimo_produto_cadastrado, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ProdutosAdminActivity.this, R.string.toast_otimo_produto_cadastrado, Toast.LENGTH_SHORT).show();
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(ProdutoAdminActivity.this, R.string.toast_produto_nao_cadastrado, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ProdutosAdminActivity.this, R.string.toast_produto_nao_cadastrado, Toast.LENGTH_SHORT).show();
                                 }
                             });
 
                     limparForm();
                 }else{
-                    Toast.makeText(ProdutoAdminActivity.this, R.string.toast_todos_campos_devem_preenchidos, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ProdutosAdminActivity.this, R.string.toast_todos_campos_devem_preenchidos, Toast.LENGTH_SHORT).show();
                 }
 
             }

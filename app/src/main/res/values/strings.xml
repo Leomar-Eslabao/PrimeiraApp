@@ -66,6 +66,13 @@
     <string name="situacao_usuario_ativo">Situação:</string>
     <string name="toast_produto_removido">Produto Removido da Cesta!</string>
     <string name="toast_nao_ha_dados_cadastrados">Não há dados cadastrados</string>
+    <string name="nome_do_cliente">Nome do cliente</string>
+    <string name="sobrenome">Sobrenome</string>
+    <string name="cpf">cpf</string>
+    <string name="bt_salvar">bt_salvar</string>
+    <string name="nome">Nome</string>
+    <string name="toast_otimo_cadastrado">Ótimo!  Cadastrado.</string>
+    <string name="toast_operacao_falhou">Ops! Falha na operação</string>
 
 
 </resources>

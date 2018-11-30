@@ -46,10 +46,10 @@ public class ClienteAdapter extends ArrayAdapter<Cliente> {
         tvCPF.setText(cliente.getCpf().toString());
 
         ImageView fotoCliente = convertView.findViewById(R.id.imvClienteItemClientesAdapter);
-        if(cliente.getUrl_cliente()!=null){
+        if(!cliente.getUrl_cliente().equals("")){
             fotoCliente.setImageURI(Uri.parse(cliente.getUrl_cliente()));
         }else{
-            fotoCliente.setImageResource(R.mipmap.ic_launcher_round);
+            fotoCliente.setImageResource(R.drawable.cliente_icon_524x524);
         }
         return convertView;
     }

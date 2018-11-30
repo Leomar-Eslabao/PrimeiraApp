@@ -185,11 +185,12 @@ public class CestaActivity extends AppCompatActivity {
                 pedido.setFormaPagamento("dinheiro");
                 pedido.setEstadoPedido("aberto");
                 pedido.setDataCriacao(Calendar.getInstance().getTime());
-                pedido.setDataCriacao(Calendar.getInstance().getTime());
+                pedido.setDataModificacaoPedido(Calendar.getInstance().getTime());
                 pedido.setTotalPedido(totalPedido);
                 pedido.setSituacaoPedido(true);
                 pedido.setItensPedido(AppSetup.cesta);
                 pedido.setCliente(AppSetup.cliente);
+
                 //salva o pedido no database
                 myRef.child("pedidos").push().setValue(pedido);
                 //limpa o setup

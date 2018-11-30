@@ -11,7 +11,6 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -34,21 +33,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".barcode.BarcodeCaptureActivity"/>
-
-
+        <activity android:name=".barcode.BarcodeCaptureActivity" />
 
         <!-- DÚVIDA: como gero o <activity android:name=".activity.LoginActivity" android:label="Login"> -->
 
         <activity
             android:name=".activity.ProdutosActivity"
             android:label="Produtos"
-            android:theme="@style/AppTheme.NoActionBar"
-            >
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.ClientesActivity"
+            android:label="Clientes" />
+        <activity android:name=".activity.CestaActivity" />
 
-        </activity>
-        <activity android:name=".activity.ClientesActivity" android:label="Clientes"></activity>
-        <activity android:name=".activity.CestaActivity"></activity>
+        <activity
+            android:name=".activity.ProdutosAdminActivity"
+            android:label="Admin Produtos" ></activity>
+
+          <activity
+            android:name=".activity.ClienteAdminActivity"
+            android:label="Admin Cliente" ></activity>
+
     </application>
 
 </manifest>

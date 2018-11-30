@@ -3,8 +3,11 @@ package br.edu.ifsul.primeiraapp.model;
 import java.io.Serializable;
 
 public class Cliente implements Serializable{
+
+
+    private String key;
     private Long codigoDeBarras;
-    private Long cpf;
+    private String cpf;
     private String nome;
     private String sobrenome;
     private Boolean situacao;
@@ -54,23 +57,32 @@ public class Cliente implements Serializable{
         this.url_cliente = url_cliente;
     }
 
-    public Long getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(Long cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     @Override
     public String toString() {
         return "Cliente{" +
-                "codigoDeBarras=" + codigoDeBarras +
+                "key='" + key + '\'' +
+                ", codigoDeBarras=" + codigoDeBarras +
+                ", cpf='" + cpf + '\'' +
                 ", nome='" + nome + '\'' +
                 ", sobrenome='" + sobrenome + '\'' +
                 ", situacao=" + situacao +
                 ", url_cliente='" + url_cliente + '\'' +
-                ", cpf=" + cpf +
                 '}';
     }
 }

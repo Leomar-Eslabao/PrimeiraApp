@@ -3,9 +3,7 @@ package br.edu.ifsul.primeiraapp.activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -27,7 +25,6 @@ import com.google.android.gms.vision.barcode.Barcode;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
@@ -40,6 +37,7 @@ import java.util.Map;
 import br.edu.ifsul.primeiraapp.R;
 import br.edu.ifsul.primeiraapp.adapter.ProdutosAdapter;
 import br.edu.ifsul.primeiraapp.barcode.BarcodeCaptureActivity;
+import br.edu.ifsul.primeiraapp.model.ItemPedido;
 import br.edu.ifsul.primeiraapp.model.Produto;
 import br.edu.ifsul.primeiraapp.setup.AppSetup;
 
@@ -51,6 +49,8 @@ public class ProdutosActivity extends AppCompatActivity implements NavigationVie
     public ListView lvProdutos;
     private DatabaseReference myRef;
     private DrawerLayout drawer;
+
+    private List<ItemPedido> itens;
 
 
     @Override
@@ -243,6 +243,13 @@ public class ProdutosActivity extends AppCompatActivity implements NavigationVie
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        itens = new ArrayList<>();
+        itens.addAll(AppSetup.cesta);
+    }
+
     private void alertDialogSimNao(String titulo, String mensagem){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         //add the title and text
@@ -252,6 +259,11 @@ public class ProdutosActivity extends AppCompatActivity implements NavigationVie
         builder.setPositiveButton(R.string.Sim, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                for (int i = 0; i < itens.size(); i++) {
+                    atualizaEstoque(i);
+                }
+                AppSetup.cesta.clear();
+                AppSetup.cliente = null;
                 finish();
             }
         });
@@ -265,7 +277,25 @@ public class ProdutosActivity extends AppCompatActivity implements NavigationVie
         builder.show();
     }
 
+    private void atualizaEstoque(final int position) {
+        //atualiza estoque no Firebase (Essa atualização é temporária, ao efetivar o pedido isso deverá ser validado.)
+        final DatabaseReference myRef = AppSetup.getInstance().child("produtos").child(AppSetup.cesta.get(position).getProduto().getKey()).child("quantidade");
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //busca a posição de estoque atual
+                long quantidade = (long) dataSnapshot.getValue();
+                //atualiza o estoque
+                myRef.setValue(itens.get(position).getQuantidadePedido() +quantidade);
+                atualizarView();
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
 
     private void atualizarView() {
         lvProdutos.setAdapter(new ProdutosAdapter(this,AppSetup.produtos));
@@ -292,7 +322,11 @@ public class ProdutosActivity extends AppCompatActivity implements NavigationVie
             }
 
            case R.id.nav_produto_adminstracao:{
-                startActivity(new Intent(this, ProdutoAdminActivity.class));
+                startActivity(new Intent(this, ProdutosAdminActivity.class));
+                break;
+            }
+            case R.id.nav_cliente_administracao:{
+                startActivity(new Intent(this,ClienteAdminActivity.class));
                 break;
             }
 
